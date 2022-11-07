@@ -9,7 +9,7 @@ class HotelView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _size = AppLayout.getSized(context);
+    final _size = AppLayout.getSize(context);
     return Container(
       height: 350,
       width: _size.width * 0.6,

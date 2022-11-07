@@ -6,6 +6,8 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../widgets/double_text_widget.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -78,24 +80,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const Gap(40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Upcomming flights",
-                      style: Styles.headLineStyle2,
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        "View all",
-                        style: Styles.textStyle.copyWith(
-                          color: Styles.primaryColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                const DoubleTextWidget(bigText: "Upcomming flights"),
               ],
             ),
           ),
@@ -106,34 +91,14 @@ class HomeScreen extends StatelessWidget {
               left: 20,
             ),
             child: Row(
-              children: const [
-                TicketView(),
-                TicketView(),
-              ],
+              children: ticketList.map((e) => TicketView(ticket: e)).toList(),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
+          const Padding(
+            padding: EdgeInsets.symmetric(
               horizontal: 16,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Upcomming flights",
-                  style: Styles.headLineStyle2,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    "View all",
-                    style: Styles.textStyle.copyWith(
-                      color: Styles.primaryColor,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            child: DoubleTextWidget(bigText: "Hotels"),
           ),
           const Gap(20),
           SingleChildScrollView(
