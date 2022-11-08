@@ -1,7 +1,9 @@
 import 'package:booktickets/screens/app_layout.dart';
 import 'package:booktickets/utils/app_styles.dart';
+import 'package:booktickets/widgets/app_tickes_tab_widget.dart';
 import 'package:booktickets/widgets/double_text_widget.dart';
 import 'package:booktickets/widgets/icon_text.dart';
+import 'package:booktickets/widgets/stacked_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -27,54 +29,10 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           Gap(AppLayout.getHeight(20)),
-          FittedBox(
-            child: Container(
-              padding: const EdgeInsets.all(3.5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  AppLayout.getWidth(50),
-                ),
-                color: const Color(0xFFF4F6FD),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: AppLayout.getWidth(size.width * 0.44),
-                    padding: EdgeInsets.symmetric(
-                      vertical: AppLayout.getHeight(7),
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.circular(
-                          AppLayout.getHeight(50),
-                        ),
-                      ),
-                      color: Colors.white,
-                    ),
-                    child: const Center(
-                      child: Text("Airline tickets"),
-                    ),
-                  ),
-                  Container(
-                    width: AppLayout.getWidth(size.width * 0.44),
-                    padding: EdgeInsets.symmetric(
-                      vertical: AppLayout.getHeight(7),
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(
-                          AppLayout.getHeight(50),
-                        ),
-                      ),
-                      color: Colors.transparent,
-                    ),
-                    child: const Center(
-                      child: Text("Hotels"),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          AppTicketsTabWidget(
+            size: size,
+            firstTab: "Airline tickets",
+            secondTab: "Hotels",
           ),
           Gap(AppLayout.getHeight(25)),
           const IconText(
@@ -163,61 +121,30 @@ class SearchScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: AppLayout.getHeight(210),
-                        width: AppLayout.getHeight(size.width * 0.44),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            AppLayout.getWidth(12),
-                          ),
-                          color: const Color(0xFF3AB8B8),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          vertical: AppLayout.getHeight(15),
-                          horizontal: AppLayout.getWidth(16),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Discount\nfor survey",
-                              style: Styles.headLineStyle2.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Gap(AppLayout.getHeight(15)),
-                            Text(
-                              "Take the survey about our services and get discounts.",
-                              style: Styles.headLineStyle2.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        right: -45,
-                        top: -40,
-                        child: Container(
-                          padding: EdgeInsets.all(
-                            AppLayout.getHeight(30),
-                          ),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 18,
-                              color: const Color(0xFF189999),
-                            ),
-                            color: Colors.transparent,
+                  StackedCardWidget(
+                    height: AppLayout.getHeight(210),
+                    width: AppLayout.getWidth(size.width * 0.44),
+                    body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Discount\nfor survey",
+                          style: Styles.headLineStyle2.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
-                    ],
+                        Gap(AppLayout.getHeight(15)),
+                        Text(
+                          "Take the survey about our services and get discounts.",
+                          style: Styles.headLineStyle2.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Gap(AppLayout.getHeight(10)),
                   Container(

@@ -94,6 +94,7 @@ class HomeScreen extends StatelessWidget {
               children: ticketList.map((e) => TicketView(ticket: e)).toList(),
             ),
           ),
+          const Gap(25),
           const Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 16,
@@ -115,6 +116,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          const Gap(25),
         ],
       ),
     );
